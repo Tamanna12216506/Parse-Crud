@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "File Parser CRUD API",
+    "_postman_id": "c3c1b1b0-8c1a-4f1b-a111-111111111111",
+    "description": "Upload, track progress, parse, list, get and delete files.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login (JWT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"demo\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Upload file",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/files",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Progress",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/files/:id/progress",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files",
+            ":id",
+            "progress"
+          ]
+        }
+      }
+    },
+    {
+      "name": "SSE Stream",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/files/:id/stream",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files",
+            ":id",
+            "stream"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Parsed",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/files/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files",
+            ":id"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Files",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/files",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete File",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/files/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "files",
+            ":id"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
